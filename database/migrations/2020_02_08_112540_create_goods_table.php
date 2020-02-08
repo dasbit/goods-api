@@ -16,7 +16,7 @@ class CreateGoodsTable extends Migration
         Schema::create('goods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->decimal(10, 2);
+            $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id', 'category_fk')
