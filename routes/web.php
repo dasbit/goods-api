@@ -11,6 +11,12 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+/**
+ * @var \Laravel\Lumen\Routing\Router $router
+ */
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/', function () use ($router) {
+        return $router->app->version();
+    });
 });
