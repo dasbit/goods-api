@@ -16,7 +16,6 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        //todo change to use Repo
         $admin = User::whereEmail(self::ADMIN['email'])->first();
         if ($admin !== null)
             $this->command->info('admin already exists');

@@ -22,3 +22,12 @@ $factory->define(\App\Models\User::class, function (Faker\Generator $faker) {
         'api_token' => Str::random(60)
     ];
 });
+
+$factory->define(\App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->text(),
+        'parent_id' => \App\Models\Category::inRandomOrder()->first()->id ?? null
+    ];
+});
+
