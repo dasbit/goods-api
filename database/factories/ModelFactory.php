@@ -31,3 +31,12 @@ $factory->define(\App\Models\Category::class, function (Faker\Generator $faker) 
     ];
 });
 
+$factory->define(\App\Models\Good::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->word,
+        'description' => $faker->text(),
+        'price' =>round( $faker->randomFloat(4, 0, 10000), 2),
+        'category_id' => \App\Models\Category::inRandomOrder()->first()->id ?? null,
+    ];
+});
+
