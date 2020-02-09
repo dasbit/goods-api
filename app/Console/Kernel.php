@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\ControllerMakeCommand;
 use App\Console\Commands\MiddlewareMakeCommand;
 use App\Console\Commands\ModelMakeCommand;
+use App\Console\Commands\PolicyMakeCommand;
 use App\Console\Commands\ProviderMakeCommand;
 use App\Console\Commands\RequestMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -22,7 +23,8 @@ class Kernel extends ConsoleKernel
         ProviderMakeCommand::class,
         ControllerMakeCommand::class,
         MiddlewareMakeCommand::class,
-        RequestMakeCommand::class
+        RequestMakeCommand::class,
+        PolicyMakeCommand::class
     ];
 
     /**
