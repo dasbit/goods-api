@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\ControllerMakeCommand;
+use App\Console\Commands\MiddlewareMakeCommand;
 use App\Console\Commands\ModelMakeCommand;
 use App\Console\Commands\ProviderMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -18,7 +19,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         ModelMakeCommand::class,
         ProviderMakeCommand::class,
-        ControllerMakeCommand::class
+        ControllerMakeCommand::class,
+        MiddlewareMakeCommand::class
     ];
 
     /**
