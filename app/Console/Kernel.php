@@ -6,6 +6,7 @@ use App\Console\Commands\ControllerMakeCommand;
 use App\Console\Commands\MiddlewareMakeCommand;
 use App\Console\Commands\ModelMakeCommand;
 use App\Console\Commands\ProviderMakeCommand;
+use App\Console\Commands\RequestMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
@@ -20,7 +21,8 @@ class Kernel extends ConsoleKernel
         ModelMakeCommand::class,
         ProviderMakeCommand::class,
         ControllerMakeCommand::class,
-        MiddlewareMakeCommand::class
+        MiddlewareMakeCommand::class,
+        RequestMakeCommand::class
     ];
 
     /**
