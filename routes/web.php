@@ -15,8 +15,11 @@
  * @var \Laravel\Lumen\Routing\Router $router
  */
 
+$router->post('/auth/login', 'Auth\AuthController@login');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
+
 $router->group(['middleware' => 'auth'], function () use ($router) {
-    $router->get('/', function () use ($router) {
-        return $router->app->version();
-    });
+
 });

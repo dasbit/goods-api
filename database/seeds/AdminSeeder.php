@@ -9,7 +9,8 @@ class AdminSeeder extends Seeder
         'is_admin' => true,
         'login' => 'admin',
         'email' => 'admin@app.com',
-        'password' => 'secret'
+        'password' => 'secret',
+        'api_token' => 'zCAb2U8Q15mke7TeL09ovl25Q9Gd4IkRgmjcsNxt66NA96jXNO7S35LLfBD5'
     ];
 
     /**

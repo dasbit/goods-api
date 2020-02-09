@@ -34,3 +34,22 @@ if ( ! function_exists('config_path'))
 //        die(1);
 //    }
 //}
+
+
+if(!function_exists('generateUniqueField')){
+    /**
+     * Generate unique value for model field
+     *
+     * @param string $table
+     * @param string $field
+     * @param callable $value_generator
+     * @return mixed
+     */
+    function generateUniqueField(string $table, string $field, callable $value_generator){
+        $value = $value_generator();
+        while (DB::table($table)->select($field)->where($field, '=', $value)->count() > 0){
+            $value = $value_generator();
+        }
+        return $value;
+    }
+}

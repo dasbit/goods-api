@@ -7,6 +7,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -46,13 +47,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (!env('APP_DEBUG')){
+        if (env('APP_DEBUG') == false){
+            if ($exception instanceof AccessDeniedException)
+                return response()->json([
+                    'message' => $exception->getMessage()
+                ], 403);
+            if ($exception instanceof ValidationException)
+                return response([
+                    'message' => 'Validation exception',
+                    'errors' => $exception->errors()
+                ], 422);
             $message =  $exception->getMessage();
             if ($exception instanceof NotFoundHttpException)
                 $message = 'Not found';
+            $code = 500;
+            if ($exception instanceof HttpException)
+                $code = $exception->getStatusCode();
             return response()->json([
                 'message' => $message
-            ], $exception->getStatusCode() ?? 500);
+            ], $code);
         }
         return parent::render($request, $exception);
     }

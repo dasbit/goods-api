@@ -3,8 +3,8 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Laravel\Lumen\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class DummyClass extends TestCase
