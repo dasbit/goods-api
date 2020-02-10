@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Good;
 use App\Models\User;
 use App\Policies\CategoryPolicy;
+use App\Policies\GoodPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -44,5 +46,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::policy(Category::class, CategoryPolicy::class);
+        Gate::policy(Good::class, GoodPolicy::class);
     }
 }

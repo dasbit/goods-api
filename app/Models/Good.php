@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Tags\HasTags;
 
 class Good extends Model
 {
+    use HasTags;
+
     /**
      * @var array $fillable
      */

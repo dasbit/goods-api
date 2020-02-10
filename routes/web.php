@@ -26,4 +26,9 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/categories' , 'CategoriesController@store');
     $router->put('/categories/{id}', 'CategoriesController@update');
     $router->delete('/categories/{id}', 'CategoriesController@destroy');
+
+    $router->get('/goods', 'GoodsController@index');
+    $router->post('/goods' , 'GoodsController@store');
+    $router->put('/goods/{id}', 'GoodsController@update');
+    $router->delete('/goods/{id}', 'GoodsController@destroy');
 });

@@ -11,6 +11,7 @@ use App\Console\Commands\RequestMakeCommand;
 use App\Console\Commands\ResourceMakeCommand;
 use App\Console\Commands\TestMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\VendorPublishCommand;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -28,7 +29,8 @@ class Kernel extends ConsoleKernel
         RequestMakeCommand::class,
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
-        TestMakeCommand::class
+        TestMakeCommand::class,
+        VendorPublishCommand::class
     ];
 
     /**

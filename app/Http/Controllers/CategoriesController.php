@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Http\Resources\Category\CategoryListResource;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Category\TreeResource;
-use App\Models\Category;
-use App\Repositories\CategoriesRepositoryInterface;
+use App\Repositories\Contracts\CategoriesRepositoryInterface;
 use Illuminate\Http\Request;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
