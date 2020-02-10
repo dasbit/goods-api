@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Repositories;
+namespace App\Repositories\Contracts;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -38,7 +38,8 @@ interface EloquentRepositoryInterface
     public function count(): int;
 
     /**
+     * @param array $with
      * @return LengthAwarePaginator
      */
-    public function paginate(): LengthAwarePaginator;
+    public function paginate($with = []): LengthAwarePaginator;
 }
