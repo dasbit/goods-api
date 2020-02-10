@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Resources\Auth\LoginSuccess;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,8 +27,10 @@ class AuthController extends Controller
     }
 
     /**
+     * Login
+     *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return LoginSuccess
      * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
@@ -45,9 +48,6 @@ class AuthController extends Controller
             throw new AccessDeniedException('Access Denied');
         }
 
-        return response()->json([
-            'token' => $user->api_token,
-            'user' => $user
-        ]);
+        return new LoginSuccess($user);
     }
 }

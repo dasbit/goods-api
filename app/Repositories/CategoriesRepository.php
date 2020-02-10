@@ -9,4 +9,9 @@ class CategoriesRepository extends BaseRepository implements CategoriesRepositor
     {
         parent::__construct($model);
     }
+
+    public function getTree()
+    {
+        return $this->model->query()->get()->toTree();
+    }
 }

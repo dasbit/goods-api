@@ -15,6 +15,11 @@ class Category extends Model
     protected $fillable = ['name', 'description'];
 
     /**
+     * @var array $hidden
+     */
+    protected $hidden = ['_lft', '_rgt'];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function goods()

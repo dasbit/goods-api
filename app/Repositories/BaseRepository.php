@@ -2,10 +2,13 @@
 
 namespace App\Repositories;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements EloquentRepositoryInterface
 {
+    public $paginatePerPage = 10;
+
     /**
      * @var Model
      */
@@ -22,6 +25,15 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * @param $id
+     * @return Model
+     */
+    public function find($id): ?Model
+    {
+        return $this->model->find($id);
+    }
+
+    /**
      * @param array $attributes
      *
      * @return Model
@@ -32,12 +44,15 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
-     * @param $id
+     * @param Model $model
+     * @param array $attributes
      * @return Model
      */
-    public function find($id): ?Model
+    public function update(Model $model, array $attributes) : Model
     {
-        return $this->model->find($id);
+        $model->update($attributes);
+
+        return $model;
     }
 
     /**
@@ -46,5 +61,13 @@ class BaseRepository implements EloquentRepositoryInterface
     public function count() : int
     {
         return $this->model->count();
+    }
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function paginate() : LengthAwarePaginator
+    {
+        return $this->model->query()->paginate($this->paginatePerPage);
     }
 }

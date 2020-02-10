@@ -21,5 +21,9 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
-
+    $router->get('/categories/tree', 'CategoriesController@tree');
+    $router->get('/categories', 'CategoriesController@index');
+    $router->post('/categories' , 'CategoriesController@store');
+    $router->put('/categories/{id}', 'CategoriesController@update');
+    $router->delete('/categories/{id}', 'CategoriesController@destroy');
 });
