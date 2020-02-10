@@ -19,7 +19,6 @@ services:
     networks:
       - app-network
     command:  sh -c "composer install &&
-              php artisan key:generate &&
               php artisan migrate &&
               php artisan db:seed &&
               php-fpm"
