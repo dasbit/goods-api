@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Contracts\EloquentRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 
@@ -64,10 +65,11 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * @param array $with
      * @return LengthAwarePaginator
      */
-    public function paginate() : LengthAwarePaginator
+    public function paginate($with = []) : LengthAwarePaginator
     {
-        return $this->model->query()->paginate($this->paginatePerPage);
+        return $this->model->query()->with($with)->paginate($this->paginatePerPage);
     }
 }

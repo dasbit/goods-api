@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Category;
+namespace App\Http\Resources\Tag;
 
-use App\Models\Category;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CategoryListResource extends ResourceCollection
+class TagListResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,6 +14,8 @@ class CategoryListResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        return CategoryResource::collection($this->collection);
+        $collection = $this->collection;
+
+        return $collection->pluck('name')->toArray();
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Repositories;
 
 use App\Models\Category;
+use App\Repositories\Contracts\CategoriesRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class CategoriesRepository extends BaseRepository implements CategoriesRepositoryInterface {
