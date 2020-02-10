@@ -1,21 +1,23 @@
+
 <?php
+
+namespace DummyNamespace;
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class DummyClass extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic feature test example.
      *
      * @return void
      */
     public function testExample()
     {
-        $this->get('/');
+        $response = $this->get('/');
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
+        $response->assertStatus(200);
     }
 }

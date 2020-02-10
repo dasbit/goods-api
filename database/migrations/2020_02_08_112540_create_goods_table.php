@@ -23,6 +23,11 @@ class CreateGoodsTable extends Migration
                 ->references('id')
                 ->on('categories')
                 ->onDelete('set null');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id', 'user_fk')
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

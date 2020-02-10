@@ -2,8 +2,14 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ControllerMakeCommand;
+use App\Console\Commands\MiddlewareMakeCommand;
 use App\Console\Commands\ModelMakeCommand;
+use App\Console\Commands\PolicyMakeCommand;
 use App\Console\Commands\ProviderMakeCommand;
+use App\Console\Commands\RequestMakeCommand;
+use App\Console\Commands\ResourceMakeCommand;
+use App\Console\Commands\TestMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +22,13 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         ModelMakeCommand::class,
-        ProviderMakeCommand::class
+        ProviderMakeCommand::class,
+        ControllerMakeCommand::class,
+        MiddlewareMakeCommand::class,
+        RequestMakeCommand::class,
+        PolicyMakeCommand::class,
+        ResourceMakeCommand::class,
+        TestMakeCommand::class
     ];
 
     /**
