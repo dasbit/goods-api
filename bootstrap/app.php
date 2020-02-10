@@ -84,12 +84,18 @@ if (env('APP_DEBUG')) {
 }
 // Package Service Providers
 $app->register(\Kalnoy\Nestedset\NestedSetServiceProvider::class);
+$app->register(\Spatie\Tags\TagsServiceProvider::class);
 
 // Own Service Providers
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\App\Providers\RepositoriesServiceProvider::class);
+
+//Configuring
+
+$app->instance('path.config', app()->basePath() . DIRECTORY_SEPARATOR . 'config');
+$app->instance('path.storage', app()->basePath() . DIRECTORY_SEPARATOR . 'storage');
 
 /*
 |--------------------------------------------------------------------------

@@ -36,11 +36,17 @@ $factory->define(\App\Models\Category::class, function (Faker\Generator $faker) 
 });
 
 $factory->define(\App\Models\Good::class, function (Faker\Generator $faker) {
+    $tags = [];
+    $tags_count = rand(0, 5);
+    for ($i=0; $i<$tags_count; $i++)
+        $tags[] = $faker->word;
+
     return [
         'title' => $faker->word,
         'description' => $faker->text(),
         'price' =>round( $faker->randomFloat(4, 0, 10000), 2),
         'category_id' => \App\Models\Category::inRandomOrder()->first()->id ?? null,
-        'user_id'  => \App\Models\User::inRandomOrder()->first()->id ?? null
+        'user_id'  => \App\Models\User::inRandomOrder()->first()->id ?? null,
+        'tags' => $tags
     ];
 });
